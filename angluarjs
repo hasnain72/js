@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>Lazzat Food</title>
+   <meta name="csrf-token" content="k6AIGwZNiodr3rIK2XXM6NwqtQdH5IpHhJngUNcV">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="http://localhost:8000/admin/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://localhost:8000/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+  rel="stylesheet">
+  <link href="http://localhost:8000/admin/css/font-awesome.css" rel="stylesheet">
+  <link href="http://localhost:8000/admin/css/style.css" rel="stylesheet">
+  <link href="http://localhost:8000/admin/css/pages/dashboard.css" rel="stylesheet">
+  <link href="http://localhost:8000/admin/css/pages/signin.css" rel="stylesheet" type="text/css">
+  <link href="http://localhost:8000/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+  <link href="http://localhost:8000/admin/datetimepicker/jquery.datetimepicker.css" rel="stylesheet" type="text/css">
+ 
+  <link href="http://localhost:8000/admin/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+
+  <meta name="token" content="k6AIGwZNiodr3rIK2XXM6NwqtQdH5IpHhJngUNcV">
+     <style type="text/css">
+.main {
+  /* padding-bottom: 1em; */
+  border-bottom: 0px solid #000; 
+  /* border-bottom: 1px solid #000; */
+}
+@media (min-width: 1200px){
+  .span4 {
+   /*width: 575px;*/
+   width: calc(40%);
+   margin-left: 0px;
+ }
+ .span8 {
+  /* width: 770px; */
+  width: calc(55%);
+}
+}
+
+.catagory{
+  list-style: none;
+  margin-left: -46px;
+  height: 500px;
+  overflow-y: scroll;
+}
+.catagory li{
+  line-height: 15px;
+  background: #ea2201;
+  width: 64px;
+  height: 40px;
+  padding: 16px;
+  text-align: center;
+  color: white;
+  border: 1px solid darkgray;
+}
+.widget-content {
+  padding: 1px 11px 0px;
+  background: #bcbcbc;
+  /* border: 1px solid #D5D5D5; */
+  -moz-border-radius: 5px;
+  /* -webkit-border-radius: 5px; */
+  /* border-radius: 5px; */
+}
+.shortcuts .shortcut {
+ width: 140px;
+ display: inline-block;
+ padding: -23px 0;
+ margin: 0px 0.9% 1em;
+ vertical-align: top;
+ text-decoration: none;
+ background: #ea2201bf;
+ /* border-radius: 5px; */
+ height: 68px;
+ /* font-size: small; */
+ /* font-weight: bolder; */
+ border-radius: 5px !important;
+}
+.product_row{
+ float: left;
+ width: 87%;
+ margin-left: -5px;
+}
+.shortcuts{
+  height: 500px;
+  overflow-y: scroll;
+}
+.value_shortcuts{
+  background: #ea2201bf;
+  color: white;
+  font-size: 14px;
+}
+.shortcuts .shortcut-label {
+  display: block;
+  font-weight: 600;
+  color: #f6eaea;
+}
+@media (min-width: 1200px){
+  input.span2, textarea.span2, .uneditable-input.span2 {
+    width: 84px;
+    height: 12px;
+    margin-top: 10px;
+  }
+}
+.input-append .add-on, .input-append .btn {
+ width: 40px;
+ height: 23px;
+ margin-top: 2px;
+ border-style: inset;
+}
+.shortcut:hover{
+ background: #ea2201bf !important;
+}
+h2 {
+  font-size: 17px;
+  line-height: 29px;
+  text-align: center;
+  color: bisque;
+  background: darkblue;
+  margin-bottom: 10px;
+}
+.input-append{
+  display: flex;
+}
+.input_btn_qty .plus{
+  height: 16px;
+  border-style: inset;
+  background: darkblue;
+  font-size: 20px;
+  color: springgreen;
+  border-radius: 7px;
+  margin-top: 8px;
+  margin-right: 0px;
+  margin-left: 0px !important;
+}
+.input_btn_qty .minus{
+  height: 16px;
+  margin-top: 7px;
+  border-style: inset;
+  background: darkblue;
+  margin-top: 8px;
+  font-size: 20px;
+  margin-left: 0px;
+  color: white !important;
+}
+.input-prepend .add-on, .input-append .add-on {
+  display: inline-block;
+  width: auto;
+  min-width: 16px;
+  height: 18px;
+  padding: 4px 4px;
+  font-weight: normal;
+  line-height: 19px;
+  text-align: center;
+  /* text-shadow: 0 1px 0 #ffffff; */
+  text-shadow: none;
+  vertical-align: middle;
+  border: 1px solid #de482f;
+  border-radius: 8px;
+}
+@media (min-width: 1200px){
+  input.span2, textarea.span2, .uneditable-input.span2 {
+    width: 80px;
+    height: 12px;
+    margin-top: 10px;
+  }
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  display: none;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.table th, .table td {
+  padding: 6px;
+  line-height: 2px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+.action-table{
+  border-radius: 0px;
+
+}
+.action-table .widget-header{
+  background: darkblue;
+  display: none;
+}
+.action-table h3{
+  color: #ffe4c2;
+}
+.action-table tr{
+  background: white;
+  color: black;
+  font-weight: 500;
+}
+.action-table i{
+  color: red;
+}
+.action-table .nav {
+  margin-left: 0;
+  margin-bottom: 0px;
+}
+
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover {
+  color: #ffffff;
+  background-color: #00008b;
+  /* border: 1px solid #ddd; */
+  border-bottom-color: transparent;
+  cursor: default;
+}
+.nav-tabs>li>a, .nav-pills>li>a {
+  padding-right: 7px;
+  padding-left: 20px;
+  margin-right: -2px;
+  line-height: 14px;
+}
+.nav>li>a {
+  display: block;
+  color: black;
+  border: 1px solid black !important;
+}
+th{
+  background: darkblue !important;
+  color: white !important;
+}
+.fix_bill_height{
+  height: 360px;
+  overflow-y: scroll;
+
+}
+.form-actions {
+  padding: 12px 5px 10px;
+  margin-top: 1px;
+  /* margin-bottom: -19px; */
+  background-color: #00008b;
+  border-top: 1px solid #ddd;
+  *: ;
+  zoom: 1;
+}
+.input_bill input{
+ display: inline-block;
+ /*width: 171px;*/
+ width: calc(27%);
+ height: 12px;
+ padding: 4px;
+ margin-bottom: 9px;
+ font-size: 13px;
+ line-height: 18px;
+ color: black;
+ font-weight: 800;
+}
+.input_bill  .btn{
+  height: 24px;
+  width: 135px;
+}
+.main_row_heading{
+  background: #ea2201;
+  height: 28px;
+  margin-top: -33px;
+}
+.main_row_heading .main_info{
+  list-style: none;
+  display: inline;
+}
+.main_row_heading .main_info li{
+  float: left;
+  line-height: 18px;
+  margin-right: 80px;
+  color: cornsilk;
+  /* background: darkblue; */
+  margin-top: 5px;
+  
+}
+.date_ft{
+  margin-left: 58px;
+}
+
+.check_bill_type{
+  background: darkblue;
+  padding: 5px;
+  /* padding-left: 120px; */
+  text-align: left;
+}
+.check_bill_type .radio.inline{
+  font-size: 16px;
+  color: white;
+}
+
+.check_bill_type .checkbox.inline{
+  float: right;
+  padding: 5px;
+  color: aliceblue;
+  font-size: 16px;
+}
+.modal-header{
+  background: darkblue;
+  color: white;
+}
+
+.info_bill_over_all{
+  background: darkblue;
+}
+.info_bill_over_all span{
+ border-radius: 0px;
+ padding: 0px;
+ margin-right: 113px;
+ color: aqua;
+
+}
+a:hover {
+  cursor:pointer !important;
+}
+.table_sale_btn{
+  background: springgreen;
+  margin: 5px;
+  color: black;
+}
+.table_sale_select{
+  width: 91px;
+  background-color: #ea2201;
+  color: white;
+  height: 24px;
+  padding: 2px;
+}
+.owner_select{
+  margin-left: 26px;
+  height: 25px;
+  margin-top: 2px;
+  background: darkblue;
+  color: white;
+  padding: 2px;
+
+}
+</style>
+</head>
+<body  ng-controller="myController">
+
+<div class="navbar navbar-fixed-top">
+    <div class="subnavbar">
+      <div class="subnavbar-inner">
+        <div class="container">
+          <ul class="mainnav">
+            <li class="active"><a href="http://localhost:8000"><i class=" icon-home"></i><span>Dashboard</span> </a> </li>
+            <li><a href="http://localhost:8000/products"><i class="icon-th"></i><span>Products</span> </a> </li>
+            <li><a href="http://localhost:8000/catagory"><i class="icon-th-large"></i><span>Categories</span> </a> </li>
+             <li class="dropdown subnavbar-open-right">          
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-truck"></i>
+                <span>Stocks</span>
+                <b class="caret"></b>
+              </a>  
+
+              <ul class="dropdown-menu">
+               <li><a href="http://localhost:8000/stock/daily">Daily Stock</a></li>
+                <li><a href="http://localhost:8000/stock/meat-and-bones">Meat & Bones</a></li>
+                 <li><a href="http://localhost:8000/stock/chicken">Chicken</a></li>
+                 <li><a href="http://localhost:8000/stock/daily-chicken-and-kabab">Daily Chicken & Kabab</a></li>
+              </ul>           
+            </li>
+             <li class="dropdown subnavbar-open-right">          
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-list-alt"></i>
+                <span>Reports</span>
+                <b class="caret"></b>
+              </a>  
+
+              <ul class="dropdown-menu">
+               <li><a href="http://localhost:8000/sell-report">Sales</a></li>
+                <li><a href="http://localhost:8000/reports/cash-register">Cash Register</a></li>
+                <li><a href="http://localhost:8000/reports/daily-closing-and-cash-forward">Daily Closing</a></li>
+                <li><a href="http://localhost:8000/reports/daily-cash-closing">Daily Cash Closing</a></li>
+              <!--   <li><a href="http://localhost:8000/reports/cash-register">Product Wise Sale Report</a></li>
+                <li><a href="http://localhost:8000/reports/cash-register">Monthly Sale Report</a></li> -->
+              </ul>           
+            </li>
+            <li><a href="http://localhost:8000/expense"><i class="icon-money"></i><span>Expense</span> </a> </li>
+            <li><a href="http://localhost:8000/cash-register"><i class="icon-paper-clip"></i><span>Cash Register</span> </a> </li>
+            <li><a href="http://localhost:8000/close-cash-register"><i class="icon-paper-clip"></i><span>Close Register</span> </a> </li>
+            <li><a href="http://localhost:8000/start-sale"><i class="icon-play"></i><span>POS</span> </a> </li>
+            
+            <li class="dropdown subnavbar-open-right">          
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cogs"></i>
+                <span>Business Settings</span>
+                <b class="caret"></b>
+              </a>  
+
+              <ul class="dropdown-menu">
+               <li><a href="http://localhost:8000/business-settings">Business Settings</a></li>
+                <li><a href="icons.html">Location Settings</a></li>
+                <li><a href="http://localhost:8000/variation">Variation Settings</a></li>
+                 <li><a href="faq.html">Owner's Accounts</a></li>
+              </ul>           
+            </li>
+             <li class="dropdown subnavbar-open-right">          
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-user"></i>
+                <span>hasnain</span>
+                <b class="caret"></b>
+              </a>  
+
+              <ul class="dropdown-menu">
+                <li><a href="login.html">My Profile</a></li>
+                <li><a href="login.html">Logout</a></li>
+
+              </ul>           
+            </li>
+           
+          </ul>
+        </div>
+        <!-- /container --> 
+      </div>
+      <!-- /subnavbar-inner --> 
+    </div>
+  </div>
+
+
+<div class="row main_row_heading">
+
+  <ul class="main_info">
+    <li class="date_ft">Today Start Day Time:&nbsp;&nbsp;04-07-2021 6:00 AM</li>
+    <li>Sale:&nbsp;</li>
+    <li>Expense:&nbsp;</li>
+    <li>Cash:&nbsp;</li>
+    <li>Table:&nbsp;</li>
+    <li>Chicken:&nbsp;</li>
+    <li>kabab:&nbsp;</li>
+
+    
+  </ul>
+
+</div>
+
+
+<div class="row">  
+
+
+  <div class="span8">
+
+    <div class="widget">
+
+      <div class="widget-content">
+
+        <div class="span1" ng-controller="CatagoryController">
+          <ul class="catagory">
+
+            <li ng-repeat="(index, catagory) in catagories" ng-click="selectedProductType(catagory)">{{ catagory.name }}</li>
+          </ul>
+          
+        </div>
+        <div class="span11 product_row">
+          <div id="products">
+            <h2> Bill Type: {{ bill_type() }} :  {{ bills_of_table_currently_active() }}</h2>
+            <div class="shortcuts">
+              <a href="javascript:;" class="shortcut" ng-repeat="(index, item) in inventory | filter:search ">
+
+                <span class="shortcut-label">{{ item.name }}</span>
+                <span class="shortcut-label value_shortcuts">{{ item.sale_price }}</span>
+                <div class="input-prepend input-append input_btn_qty" id="product_div_">
+
+                  <input type="hidden" name="product_id" class="product_id" value="">
+
+                  <span class="add-on minus" id="product_qty_minus">-</span>
+
+                  <input class="span2"  type="number" min="0" id="{{item.id}}"
+                  ng-model="item.qty" >
+                  <input type="hidden" value="{{item.inv_quantity}}"
+                  id="com-{{item.id}}">
+
+                  <span class="add-on plus" id="product_qty_plus" ng-click="addItem(item)"
+                  data-ng-disabled="checkQuantity(item)" >+</span>
+
+                </div>
+
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div> <!-- /widget-content -->
+
+    </div> <!-- /widget -->
+
+  </div> <!-- /span6 -->
+
+
+  <div class="span4">
+
+    <div class="widget widget-table action-table">
+      <div class="widget-header"> <i class="icon-money"></i>
+        <h3>Bill</h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <div class="tabbable">
+          <ul class="nav nav-tabs bill_tabs">
+            <li class="active" data-id="a1">
+              <a href="#normal" data-toggle="tab" ng-click="check_sale_type_table_or_normal('normal')" >Normal</a>
+            </li>
+            <li class="" data-id="a2"><a href="#table_sale" ng-click="check_sale_type_table_or_normal('table')" data-toggle="tab">Table</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="normal">
+              <div style="overflow-y: scroll;" ng-style="{'height': (IsTableBillVisible == true) ? '360px' : '360px' }">
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Product</th>
+                      <th> Qty</th>
+                      <th> Price</th>
+                      <th> Total</th>
+                      <th> Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="product_pos">
+                   <tr ng-repeat="(index, item) in cart | orderBy:'cart_length'">
+                    <td>{{item.cart_length}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.qty}}</td>
+                    <td>{{item.sale_price}}</td>
+                    <td>{{ item.sale_price + ' x ' + item.qty + ' = ' +(getCost(item)) }}</td>
+                    <td><a ng-click="removeItem(item);">
+                      <i  class="icon-large icon-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center;font-size: 14px;" colspan="4">Total</td>
+                  <td style="font-size: 14px;">PKR  : {{ getTotal() }}</td>
+                  <td></td>
+                </tr>
+              </tbody>
+
+
+            </table>
+          </div>
+          <div class="controls info_bill_over_all" style="display: flex">
+            <div class="dropdown "> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">Delivery Charges &nbsp;&nbsp;&nbsp;<b>{{ get_delivery_charges() }}</b></a>
+              <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
+                <li><a href="#"><i class=" icon-user"></i>&nbsp;&nbsp;{{ get_customer_name() }}</a></li>
+                <li><a href="#"><i class=" icon-phone-sign"></i>&nbsp;&nbsp;{{ get_customer_mobile_number() }}</a></li>
+                <li><a href="#"><i class="icon-map-marker"></i>&nbsp;&nbsp;{{ get_customer_address() }}</a></li>
+              </ul>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="dropdown"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">Extra Item Price&nbsp;&nbsp;&nbsp;<b>{{ get_extra_item_price() }}</b></a>
+              <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
+                <li><a href="#"><i class="icon-file"></i> &nbsp;&nbsp;{{get_extra_item_name()}} </a></li>
+                <li><a href="#"><i class="icon-money"></i>&nbsp;&nbsp;{{ get_extra_item_price() }}</a></li>
+              </ul>
+            </div>
+            <div  ng-controller="OwnersController">
+              <select class="owner_select" ng-model="owner_id" ng-style="{'display': (result == 'guest') ? 'block' : 'none' }">
+                <option value="{{owner.id}}" ng-repeat="(index, owner) in owners">{{owner.name}}</option>
+
+              </select>
+            </div>
+
+          </div>
+          <div class="controls check_bill_type">
+            <label class="radio inline">
+
+              <input type="radio"
+              id="sale_type"
+              ng-model='result'
+              ng-value='"take"'
+              [checked]="take === defaultChoice"
+              ng-click="checkEvent($event)" />Take
+
+            </label>
+
+            <label class="radio inline">
+             <input type="radio"
+             id="sale_type"
+             ng-model='result'
+             ng-value='"dine"'
+             ng-click="checkEvent($event);"  />Dine
+           </label>
+           <label class="radio inline">
+            <input type="radio"
+            id="sale_type"
+            ng-model='result'
+            ng-value='"delivery"'
+            [checked]="delivery === defaultChoice"
+
+            ng-click="modalOpen(); checkEvent($event)"
+            data-target="#largeModal" 
+            data-toggle="modal"
+            />Delivery
+          </label>
+
+          <label class="radio inline">
+            <input type="radio"
+            id="sale_type"
+            ng-model='result'
+            ng-value='"guest"'
+            [checked]="guest === defaultChoice"
+            ng-click="checkEvent($event)" /> Guest/Personal
+          </label>
+          <label class="checkbox inline">
+           <input ng-click="smallModalOpen()" class="btn btn-secondary mb-1" data-target="#smallModal" type="checkbox" data-toggle="modal" data-target="#smallmodal">Extra / Items
+         </label>
+       </div>
+       <div class="form-actions input_bill">
+
+        <input type="number" disabled="" value="{{ getTotal() }}" name="total" placeholder="Total">
+        <input type="number" ng-model="discount" name="discount" min="0" placeholder="Discount Amount">
+        <input type="number" disabled="" value="{{ finalTotal() }}" name="final_paid" placeholder="Final Amount">
+        <br>
+        <button class="btn btn-danger">Cancel</button>
+        <button class="btn btn-warning">Save & Print</button>
+        <button class="btn btn-invert" ng-click="print(result)">Save Only</button>
+      </div>
+
+    </div>
+
+    <div class="tab-pane" id="table_sale">
+      <div class="controls">
+        <a class="btn btn-mini table_sale_btn" ng-click="ShowHide()"><i class="icon-glass"></i>Show Table</a>
+        <a class="btn btn-mini table_sale_btn">{{ bills_of_table_currently_active() }}</a>
+      </div>
+      <table class="table table-bordered" ng-show ="IsVisible">
+        <thead>
+          <tr>
+            <th>Table No</th>
+            <th>Total Items</th>
+            <th>Total Bill</th>
+            <th>Status</th>
+            <th>TYPE</th>
+            <th class="td-actions"> </th>
+          </tr>
+        </thead>
+        <tbody ng-controller="TablesController">
+         <tr ng-repeat="(index, table) in tables">
+          <td style="text-align:center;"><strong>{{ table.id }}</strong></td>
+          <td>{{ table.total_items_of_table }}</td>
+          <td>{{ table.total_bill_of_table }}</td>
+          <td>{{ table.table_status }}</td>
+          <td>{{table.sale_type}}</td>
+          <td><a ng-click="selectedTableForDineIn(table.key)"><i class="icon-large icon-plus-sign"></i></a> </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="overflow-y: scroll;" ng-style="{'height': (IsTableBillVisible == false) ? '0px' : '360px' }">
+      <table class="table table-bordered" ng-show ="IsTableBillVisible">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th class="td-actions"> </th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr ng-repeat="(index, item) in table_cart | orderBy:'cart_length'">
+          <td>{{item.cart_length}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.qty}}</td>
+          <td>{{item.sale_price}}</td>
+          <td>{{ item.sale_price + ' x ' + item.qty + ' = ' +(getCost(item)) }}</td>
+          <td><a ng-click="removeItemFromTableCart(item);">
+            <i  class="icon-large icon-trash"></i>
+          </a>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td style="text-align: center;font-size: 14px;" colspan="4">Total</td>
+        <td style="font-size: 14px;">PKR  : {{ get_currently_table_total() }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div ng-show ="IsTableBillVisible">
+  <div style="background: darkblue;
+  margin-bottom: -3px;">
+  <div  ng-controller="OwnersController" style="display: contents;padding-top: 5px;">
+    
+    <select style="width: 150px;" class="owner_select"
+        ng-model="table_sale_type"
+        ng-options="c.name for c in owners track by c.id" 
+    >
+      
+
+    </select>
+  </div>
+
+</div>
+<div class="form-actions input_bill">
+
+
+ <input type="number" disabled="" value="{{ get_currently_table_total() }}" name="total" placeholder="Total">
+ <input type="number" value="{{ get_discount_value_of_table() }}"  ng-model="discount_of_currently_active_table" name="discount_of_currently_active_table" min="0" placeholder="Discount Amount" >
+ <input type="number" disabled="" value="{{ finalTotalOfCurrentlyActiveTable() }}" name="final_paid" placeholder="Final Amount">
+ <br>
+ <button class="btn btn-danger">Cancel</button>
+ <button class="btn btn-warning" ng-click="table_save_data_and_print()">Save & Print</button>
+ <button class="btn btn-invert" ng-click="table_save_data()">Save Only</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+<!-- /widget-content --> 
+</div>
+
+</div> <!-- /span6 -->
+
+</div>
+<!-- model -->
+<!-- modal large -->
+<div id="largeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="width: fit-content;">
+  <div class="modal-header">
+    <button type="button" ng-click="modalClose()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="largeModalLabel">Delivery & Customer Info</h3>
+  </div>
+  <div class="modal-body">
+    <div class="control-group">                     
+      <label class="control-label">Name</label>
+      <div class="controls">
+        <input type="text" class="span6"  ng-model="customer_name">
+      </div> <!-- /controls -->       
+    </div>
+    <div class="control-group">                     
+      <label class="control-label">Mobile No</label>
+      <div class="controls">
+        <input type="number" max="100000000000" min="0" class="span6"  ng-model="mobile_number">
+      </div> <!-- /controls -->       
+    </div>
+    <div class="control-group">                     
+      <label class="control-label">Delivery Charges</label>
+      <div class="controls">
+        <input type="number" min="0" max="10000" class="span6"  placeholder="Delivery Charges" ng-model="delivery_charges">
+      </div> <!-- /controls -->       
+    </div>
+    <div class="control-group">                     
+      <label class="control-label">Address</label>
+      <div class="controls">
+        <input style="height: 70px;" type="address" class="span6"  ng-model="address">
+      </div> <!-- /controls -->       
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" data-dismiss="modal">OK</button>
+  </div>
+</div>
+
+
+<!-- Extra Item -->
+<div class="modal" ng-style="small_modal_style" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true" style="display: none;width: fit-content;">
+ <div class="modal-header">
+  <button type="button" ng-click="smallModalClose()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3 id="largeModalLabel">Extra Item</h3>
+</div>
+<div class="modal-body">
+  <div class="control-group">                     
+    <label class="control-label">Extra Name</label>
+    <div class="controls">
+      <input type="text" class="span6"  placeholder="Enter Extra Item" ng-model="extra_thing">
+    </div> <!-- /controls -->       
+  </div>
+  <div class="control-group">                     
+    <label class="control-label">Price</label>
+    <div class="controls">
+      <input type="number" class="span6" min="0" max="100000"  placeholder="Enter Item Price" ng-model="extra_thing_price">
+    </div> <!-- /controls -->       
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn" data-dismiss="modal" ng-click="smallModalClose()" aria-hidden="true">Close</button>
+  <button class="btn btn-primary" ng-click="smallModalClose()" data-dismiss="modal">OK</button>
+</div>
+</div>
+
+
+
+
+
+
+<div id="invoice_print" style="display: none;">
+
+</div>
+<!-- end model -->
+
+<script src="http://localhost:8000/admin/js/jquery-1.7.2.min.js"></script> 
+<script src="http://localhost:8000/admin/js/bootstrap.js"></script>
+<script src="http://localhost:8000/js/jquery.dataTables.min.js"></script>
+<script src="http://localhost:8000/admin/datetimepicker/jquery.datetimepicker.js"></script>
+
+<script src="http://localhost:8000/admin/toastr/toastr.min.js"></script>
+<script src="http://localhost:8000/admin/functions.js"></script>
+
+</body>
+</html>
+
+
+<!-- 
+  <script src="http://localhost:8000/js/pos.js"></script> -->
+  <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+  <!-- Angular js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min.js"></script>
+
+  <!-- AngularJS Application Scripts -->
+  <script type="text/javascript">
+
+    angular.module('myApp', ['ngAnimate']);
+
+    angular.module('myApp')
+    .service('PTModel', function ($rootScope) {
+      this.selectedPT = 13;
+      this.allProducts = [];
+      this.specificProducts = [];
+
+
+
+      this.setPT = function (value) {
+        this.selectedPT = value;
+        this.getSpecificProducts();
+      }
+      this.getPT = function () {
+        return this.selectedPT;
+      };
+
+      this.getAllProducts = function (products) {
+        this.allProducts = products
+        this.getSpecificProducts();
+      }
+
+      this.getSpecificProducts = function () {
+        this.specificProducts = [];
+        var spt = this.selectedPT;
+        var specificproductsArray = [];
+        angular.forEach(this.allProducts, function (value, key) {
+
+         if (value.catagory_id== spt) {
+          specificproductsArray.push(value);
+        }
+      });
+        this.specificProducts = specificproductsArray;
+        $rootScope.$broadcast('eventFired');
+
+      }
+
+    });
+
+    angular.module('myApp')
+    .controller('OwnersController', function ($scope, $http) {
+       
+
+      
+     $http({method: 'GET', url: '/pos/owners'}).success(function (data) {
+      $scope.owners=data.owners;
+       $scope.table_sale_type = $scope.owners[0];
+      
+
+      });
+
+     $scope.$watch("table_sale_type", function() {
+          
+         console.clear();
+         if (!!$scope.table_sale_type&&$scope.active_table_id!=-1) {
+
+         $scope.tables[$scope.active_table_id].sale_type=$scope.table_sale_type.id;
+
+        }
+         var check_id=$scope.get_value_of_table_select_sale_type();
+
+         if(check_id){
+            console.log("mujy id la na yes "+check_id);
+            $scope.table_sale_type.id=check_id;
+
+         }else{
+          
+           console.log("TABLE IS NEW"); 
+           // $scope.table_sale_type = $scope.owners[0];
+          
+         }
+
+         
+         
+        
+
+    });
+
+   });
+
+  //for tables
+  angular.module('myApp')
+  .controller('TablesController', function ($scope, $http) {
+    $http({method: 'GET', url: '/pos/tables'}).success(function (data) {
+
+     //pushing items into tables
+     angular.forEach(data.tables, function (value, key) {
+
+      $scope.tables.push({table_id_to_save_in_db: value.id,id: value.table_no, hall: value.hall, total_bill_of_table: 0, total_items_of_table: 0, table_status: 'Available', table_bill: [], key: key, discount: 0, sale_type: 0 });
+
+    });
+
+      // console.log($scope.tables);
+      // pushing items end
+      //
+    });
+    });//pos table end
+
+
+
+
+  angular.module('myApp')
+  .controller('CatagoryController', function ($scope, $http, PTModel) {
+    $http({method: 'GET', url: '/pos/catagories'}).success(function (data) {
+      $scope.catagories = data.catagories;
+      // console.log(data.catagories);
+    });
+
+    PTModel.setPT(13);
+
+    $scope.selectedProductType = function (item) {
+     // console.log(item);
+     PTModel.setPT(item.id);
+   };
+
+ }).controller('myController', function ($scope, $http, PTModel, $window) {
+  $http({method: 'GET', url: '/pos/get-products-data'}).success(function (data) {
+    PTModel.getAllProducts(data.products);
+    $scope.getProducts();
+    $scope.allProducts = data.products;
+
+    // console.log(data.products);
+
+  });
+
+
+  $scope.cart = [];
+  $scope.table_cart = [];
+  $scope.customerId = undefined;
+  $scope.discount = "0";
+  $scope.delivery_charges = "0";
+  $scope.extra_thing = "";
+  $scope.extra_thing_price = "0";
+  $scope.searchFound = false;
+  $scope.showModal = false;
+  $scope.sale_type = "dine";
+  $scope.customer_name = "";
+  $scope.address = "";
+  $scope.mobile_number = "";
+
+  //table
+  $scope.tables = [];
+  $scope.active_table_id=-1;
+  $scope.sale_table_or_normal=0;//0 For Normal , 1 For Table
+  $scope.IsVisible = true;
+  $scope.IsTableBillVisible=false;
+  $scope.discount_of_currently_active_table='0';
+  $scope.owners=[];
+  $scope.table_sale_type = {};
+  
+  $scope.saving_data='0';
+  $scope.selected_sale_type_for_table=[];//dine or guests for all tables
+
+  
+  //end
+        // $scope.bill_total =0;
+//   $scope.allDeals = "";
+
+$scope.$on('eventFired', function (event) {
+  $scope.getProducts();
+})
+
+
+
+$scope.get_customer_name = function () {
+
+ return $scope.customer_name;
+
+}
+$scope.get_customer_mobile_number = function () {
+
+ return $scope.mobile_number;
+
+}
+
+$scope.get_customer_address = function () {
+
+ return $scope.address;
+
+}
+$scope.get_extra_item_price = function () {
+
+ return $scope.extra_thing_price;
+
+}
+$scope.get_extra_item_name = function () {
+
+ return $scope.extra_thing;
+
+}
+$scope.get_delivery_charges = function () {
+
+ return $scope.delivery_charges;
+
+}
+
+
+
+$scope.getProducts = function () {
+  $scope.inventory = PTModel.specificProducts;
+  $scope.search = "";
+
+}
+
+
+
+$scope.getAllProducts = function () {
+  $scope.inventory = [];
+  $scope.inventory = $scope.allProducts;
+}
+
+
+$scope.getCost = function (item) {
+ var item_cost=item.qty * item.sale_price;
+  // $scope.bill_total += parseFloat(item_cost);
+  return item_cost;
+};
+
+$scope.addItem = function (itemToAdd) {
+
+  if($scope.sale_table_or_normal==0){
+    var found = 0;
+    angular.forEach($scope.cart, function (value, key) {
+      if(value.id == itemToAdd.id){
+        found=1;  
+        $scope.cart[key].qty +=1;
+      }
+
+    });
+    if (found==1) {
+
+    }
+    else {
+      var cart_length=$scope.cart.length;
+      cart_length++;
+      $scope.cart.push({id: itemToAdd.id, name: itemToAdd.name, sale_price: itemToAdd.sale_price, qty: 1, cart_length: cart_length});
+    }
+  }
+  else{
+
+    $scope.addItemToTableCart(itemToAdd);   
+
+  } 
+
+}; //add item closed
+
+// Tables Functions
+$scope.selectedTableForDineIn = function (item) {
+
+  $scope.owner_id = 'dine';
+
+  $scope.active_table_id=item;
+  $scope.table_cart=[];
+  $scope.table_cart = $scope.tables[$scope.active_table_id].table_bill;
+  $scope.discount_of_currently_active_table=$scope.tables[$scope.active_table_id].discount;
+  $scope.IsVisible = false;
+  $scope.IsTableBillVisible=true;
+  $scope.$apply()
+  console.clear();
+  
+
+
+}
+$scope.check_sale_type_table_or_normal = function (event) {
+
+  if(event=='normal'){
+    $scope.active_table_id=-1;
+    $scope.sale_table_or_normal=0;
+    // console.log("Changes To Normal");
+  }else{
+    $scope.sale_table_or_normal=1;
+  }
+};
+
+$scope.addItemToTableCart = function (itemToAdd) {
+
+  if($scope.active_table_id==-1){
+
+   toastr.error("Please Select Table First :(");
+
+ }else{
+    //add items in array
+    var found = 0;
+    angular.forEach($scope.tables[$scope.active_table_id].table_bill, function (value, key) {
+      if(value.id == itemToAdd.id){
+        found=1;  
+        $scope.tables[$scope.active_table_id].table_bill[key].qty +=1;
+      }
+
+    });
+    if (found==1) {
+
+   }//found end
+   else {
+    var cart_length=$scope.tables[$scope.active_table_id].table_bill.length;
+    cart_length++;
+    $scope.tables[$scope.active_table_id].table_bill.push({id: itemToAdd.id, name: itemToAdd.name, sale_price: itemToAdd.sale_price, qty: 1, cart_length: cart_length});
+
+    
+    
+  }
+
+   }//end else table check
+  }; //end addItemToTableCart
+
+  $scope.get_currently_table_total = function () {
+   if($scope.active_table_id!=-1){
+     var total= $scope.tables[$scope.active_table_id].table_bill.reduce((acc, val) => acc += val.sale_price*val.qty, 0);
+     return total;
+   }
+ };
+
+ //  $scope.update_sale_type = function () {
+ //  console.log($scope.table_sale_type);
+ // };  
+
+ 
+ $scope.ShowHide = function () {
+  //If DIV is visible it will be hidden and vice versa.
+  $scope.IsVisible = $scope.IsVisible ? false : true;
+  $scope.IsTableBillVisible=false;
+}
+
+$scope.get_value_of_table_select_sale_type = function () {
+
+ if($scope.active_table_id!=-1){
+  return $scope.tables[$scope.active_table_id].sale_type;
+ }
+
+}
+//  $scope.change_select_sale_of_table = function ($value,$change_table) {
+ 
+
+  
+//   if($scope.active_table_id!=-1&&$change_table=="no"){
+     
+//      $scope.tables[$scope.active_table_id].sale_type=$value;
+//      console.log("VALUE OF ID "+$value);
+//      console.log("VALUE OF TABLE SAVED "+$scope.tables[$scope.active_table_id].sale_type);
+
+    
+//    }
+//     if($scope.active_table_id!=-1&&$change_table=="yes"){
+     
+//      console.log("YES BOSS");
+//      $scope.tables[$scope.active_table_id].sale_type=$value;
+//      console.log("VALUE OF ID "+$value);
+//      console.log("VALUE OF TABLE SAVED "+$scope.tables[$scope.active_table_id].sale_type);
+
+    
+//    }
+// }//end
+
+$scope.finalTotalOfCurrentlyActiveTable = function () {
+  if($scope.active_table_id!=-1){
+
+    var total= $scope.tables[$scope.active_table_id].table_bill.reduce((acc, val) => acc += val.sale_price*val.qty, 0);
+    var discount=$scope.tables[$scope.active_table_id].discount;
+    // Asigned values to currently table
+    //
+    var finalTotal=parseInt(total)-parseInt(discount);
+    $scope.tables[$scope.active_table_id].total_bill_of_table=finalTotal;
+    
+    $scope.tables[$scope.active_table_id].total_items_of_table=$scope.tables[$scope.active_table_id].table_bill.length;
+    if($scope.tables[$scope.active_table_id].table_bill.length>0){
+     $scope.tables[$scope.active_table_id].table_status='Serving';
+   }else{
+    $scope.tables[$scope.active_table_id].table_status='Available';
+    $scope.discount_of_currently_active_table=0;
+  }
+
+    // 
+
+    return finalTotal;
+
+  }
+};
+
+$scope.get_discount_value_of_table = function () {
+
+  if($scope.active_table_id!=-1){
+    $scope.tables[$scope.active_table_id].discount=$scope.discount_of_currently_active_table;
+    return $scope.tables[$scope.active_table_id].discount;
+  }
+
+};
+
+
+
+$scope.removeItemFromTableCart = function (item) {
+
+  if($scope.active_table_id!=-1){
+   var index = $scope.tables[$scope.active_table_id].table_bill.indexOf(item);
+   $scope.tables[$scope.active_table_id].table_bill.splice(index, 1);
+
+ }
+
+
+
+};
+
+
+//End Tables Functions
+$scope.getTotal = function () {
+ if($scope.cart.length>0){
+   var total= $scope.cart.reduce((acc, val) => acc += val.sale_price*val.qty, 0);
+   return total;
+ }else{
+  return 0;
+}
+
+};
+$scope.finalTotal = function () {
+
+ var total= $scope.cart.reduce((acc, val) => acc += val.sale_price*val.qty, 0);
+ return (parseInt(total)+parseInt($scope.delivery_charges)+parseInt($scope.extra_thing_price))-parseInt($scope.discount);
+};
+$scope.bill_type = function () {
+
+  return $scope.sale_type;
+};
+//table active
+$scope.bills_of_table_currently_active = function () {
+
+ if($scope.active_table_id!=-1){
+   var currently_table=parseInt($scope.active_table_id)+1;
+   return "Currently Active Table No #: "+currently_table;//for +1 for key index
+ }
+ 
+};
+
+$scope.checkEvent = function (event) {
+
+  $scope.sale_type=event.target.value;
+};
+
+
+
+$scope.clearCart = function () {
+  $scope.cart.length = 0;
+};
+
+$scope.removeItem = function (item) {
+  var index = $scope.cart.indexOf(item);
+  $scope.cart.splice(index, 1);
+};
+
+$scope.focusCalled = function () {
+  $scope.getAllProducts();
+}
+
+$scope.checkQuantity = function (itemToAdd) {
+
+  if (itemToAdd.inv_quantity == 0 || itemToAdd.inv_quantity < 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+$scope.modalOpen = function () {
+
+  $scope.show_this_div="display:block";
+
+  $scope.modal_style = {
+    "display": "block"
+  }
+}
+
+
+$scope.smallModalOpen = function () {
+  $scope.small_modal_style = {
+    "display": "block"
+  }
+}
+
+$scope.checkSearchSize = function(size){
+  if(size.length!=1){
+    $scope.textarea_style = {
+      "display": "block"
+    }
+    $scope.search_textarea_style = {
+      "display": "block"
+    }
+    return false;
+  }else{
+    $scope.textarea_style = {
+      "display": "block"
+    }
+    $scope.search_textarea_style = {
+      "display": "block"
+    }
+    return true;
+  }
+
+}
+
+$scope.modalClose = function () {
+  $scope.modal_style = {
+    "display": "none"
+  }
+}
+
+$scope.smallModalClose = function () {
+  $scope.small_modal_style = {
+    "display": "none"
+  }
+}
+
+$scope.smallModalCloseAndConfirm = function () {
+  $scope.small_modal_style = {
+    "display": "none"
+  }
+
+}
+
+
+$scope.print = function (result) {
+
+ if (result != undefined && result != false) {
+  var number = $scope.cart.length;
+  var carts = $scope.cart;
+  var total_amount = $scope.getTotal();
+  var discount = $scope.discount;
+  $scope.sale_type = result;
+
+  var others= {"sale_type":result, "total_amount":total_amount, "discount":discount,"extra_thing": $scope.extra_thing, "extra_thing_price": $scope.extra_thing_price, "delivery_charges": $scope.delivery_charges,
+  "customer_name": $scope.customer_name, "address": $scope.address, "mobile_number": $scope.mobile_number};
+
+
+  if (number > 0) {
+    $http({
+      url: "http://localhost:8000/pos/sells",
+      method: "POST",
+      data: {'data': JSON.stringify(carts), 'others': others},
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
+    .success(function (response) {
+
+      if(response.success){
+
+
+
+       toastr.success(response.msg);
+       $scope.clearCart();
+       $scope.discount = "0";
+       $scope.extra_thing = "";
+       $scope.extra_thing_price = "0";
+       $scope.delivery_charges = "0";
+       $scope.mobile_number = "";
+       $scope.customer_name = "";
+       $scope.address = "";
+       $scope.result = false;
+
+       $('#invoice_print').html(response.receipt); 
+       PrintElem('invoice_print');
+     }else{
+      toastr.error(response.msg);
+    }
+  },
+    function (response) { // optional
+                                // failed
+
+                              });
+
+  }else{
+   toastr.error("Please Add Some Products In Cart");
+ }
+} else {
+  toastr.error("Please select Sale Type");
+}
+};
+
+$scope.table_save_data = function () {
+  if($scope.saving_data==0){
+    $scope.saving_data=1;
+   $scope.save_current_active_table_data('0');
+  }else{
+    toastr.warning("Hold On Please While We Are Busy in Saving Data");
+  }
+  
+};
+
+$scope.table_save_data_and_print = function () {
+
+  if($scope.saving_data==0){
+    $scope.saving_data=1;
+   $scope.save_current_active_table_data('1');
+  }else{
+    toastr.warning("Hold On Please While We Are Busy in Saving Data");
+  }
+};
+
+$scope.clearCartOfTable = function () {
+
+  $scope.tables[$scope.active_table_id].discount=0;
+  $scope.tables[$scope.active_table_id].table_bill.length=0;
+  $scope.tables[$scope.active_table_id].total_bill_of_table=0;
+  
+  $scope.tables[$scope.active_table_id].table_status='Available';
+  $scope.discount_of_currently_active_table=0;
+  $scope.saving_data=0; 
+
+
+};
+
+
+$scope.save_current_active_table_data = function ($check) {
+  
+  
+  var number=$scope.tables[$scope.active_table_id].table_bill.length;
+  var table_cart=$scope.tables[$scope.active_table_id];
+  var sale_type=$scope.table_sale_type;
+
+  if (number > 0) {
+    $http({
+      url: "http://localhost:8000/pos/sells_by_table",
+      method: "POST",
+      data: {'data': JSON.stringify(table_cart), 'sale_type': sale_type},
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
+    .success(function (response) {
+     if(response.success){
+      
+      if($check==1){
+       $('#invoice_print').html(response.receipt); 
+       PrintElem('invoice_print'); 
+      }else{
+        toastr.success(response.msg);
+      }
+      $scope.clearCartOfTable();
+      $scope.saving_data=0; 
+
+    }//end success fun
+     else{
+      toastr.error(response.msg);
+    }
+  },
+    function (response) { // optional
+                                // failed
+
+                              });
+
+  }else{
+   toastr.error("Please Add Some Products In Cart");
+ }
+
+};
+
+
+}); //end main jquery
+
+
+
+
+</script>
+<script type="text/javascript">
+
+  function PrintElem(elem)
+  {
+    var mywindow = window.open('', 'PRINT', 'height=1200,width=900');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+    mywindow.print();
+    mywindow.close();
+    return true;
+  }
+</script>
